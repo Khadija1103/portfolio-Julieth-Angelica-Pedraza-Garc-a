@@ -1,0 +1,6730 @@
+:root {
+
+    --blue-dark: #17445b;
+    --blue: #245b72;
+    --blue-light: #5e8791;
+
+    --green: #719b82;
+    --green-light: #a8c5b2;
+
+    --cream: #f5f7f4;
+    --white: #ffffff;
+
+    --text: #496b78;
+    --text-light: #718991;
+    --border: #c8d7d5;
+
+    --font-title: "Cormorant Garamond", Georgia, serif;
+    --font-body: "Montserrat", Arial, sans-serif;
+
+    --container: 1310px;
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+body {
+
+    font-family: var(--font-body);
+
+    color: var(--text);
+
+    background: var(--white);
+
+    overflow-x: hidden;
+
+}
+
+img {
+
+    display: block;
+
+    width: 100%;
+
+    max-width: 100%;
+
+}
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+button,
+input,
+textarea,
+select {
+
+    font-family: inherit;
+
+}
+
+button {
+
+    cursor: pointer;
+
+}
+
+ul,
+ol {
+
+    list-style: none;
+
+}
+
+
+/* =========================================================
+   CONTENEDOR
+========================================================= */
+
+.container {
+
+    width: min(calc(100% - 80px), var(--container));
+
+    margin-inline: auto;
+
+}
+
+
+/* =========================================================
+   SECCIONES
+========================================================= */
+
+.section {
+
+    padding: 90px 0;
+
+}
+
+.section-label {
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    line-height: 1.3;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: var(--green);
+
+}
+
+.section-title {
+
+    margin-bottom: 20px;
+
+    font-family: var(--font-title);
+
+    font-size: clamp(38px, 3vw, 52px);
+
+    font-weight: 500;
+
+    line-height: .98;
+
+    color: var(--blue-dark);
+
+}
+
+p {
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   FONDO DECORATIVO GENERAL
+========================================================= */
+
+body {
+
+    position: relative;
+
+    background:
+
+        radial-gradient(
+            circle at 8% 12%,
+            rgba(113, 155, 130, .07) 0,
+            rgba(113, 155, 130, 0) 28%
+        ),
+
+        radial-gradient(
+            circle at 92% 35%,
+            rgba(36, 91, 114, .06) 0,
+            rgba(36, 91, 114, 0) 30%
+        ),
+
+        radial-gradient(
+            circle at 15% 72%,
+            rgba(168, 197, 178, .08) 0,
+            rgba(168, 197, 178, 0) 25%
+        ),
+
+        #ffffff;
+
+}
+
+
+/* =========================================================
+   TEXTURA MUY SUTIL
+========================================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -1;
+
+    pointer-events: none;
+
+    opacity: .35;
+
+    background-image:
+
+        radial-gradient(
+            rgba(23, 68, 91, .08) .6px,
+            transparent .6px
+        );
+
+    background-size: 7px 7px;
+
+    mask-image:
+
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 12%,
+            black 88%,
+            transparent 100%
+        );
+
+}
+
+
+/* =========================================================
+   FORMAS ORGÁNICAS DEL FONDO
+========================================================= */
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    z-index: -2;
+
+    width: 520px;
+    height: 520px;
+
+    top: 35%;
+    right: -280px;
+
+    border: 1px solid rgba(113, 155, 130, .12);
+
+    border-radius:
+        55% 45% 60% 40% /
+        45% 60% 40% 55%;
+
+    transform: rotate(25deg);
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   SECCIONES CON PROFUNDIDAD
+========================================================= */
+
+.about,
+.trajectory {
+
+    position: relative;
+
+    isolation: isolate;
+
+}
+
+.about::before,
+.trajectory::before {
+
+    content: "";
+
+    position: absolute;
+
+    z-index: -1;
+
+    width: 380px;
+    height: 380px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(168, 197, 178, .13) 0%,
+            rgba(168, 197, 178, .06) 38%,
+            transparent 72%
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* Posición de la forma en ABOUT */
+
+.about::before {
+
+    left: -180px;
+    top: 20px;
+
+}
+
+
+/* Posición diferente en TRAYECTORIA */
+
+.trajectory::before {
+
+    right: -180px;
+    bottom: -100px;
+
+}
+
+
+/* =========================================================
+   DECORACIÓN SUAVE EN ESPECIALIDADES
+========================================================= */
+
+.specialties {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(247, 249, 247, .98),
+            rgba(240, 246, 243, .94)
+        );
+
+}
+
+.specialties::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    left: -280px;
+    top: -250px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(113, 155, 130, .12);
+
+    box-shadow:
+
+        0 0 0 35px rgba(113, 155, 130, .025),
+
+        0 0 0 70px rgba(113, 155, 130, .018),
+
+        0 0 0 105px rgba(113, 155, 130, .012);
+
+    pointer-events: none;
+
+}
+
+.specialties::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    right: -160px;
+    bottom: -190px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(36, 91, 114, .06),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   CASOS — TEXTURA MÁS ORGÁNICA
+========================================================= */
+
+.cases {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+
+        linear-gradient(
+            120deg,
+            #f8faf8 0%,
+            #f4f8f5 50%,
+            #f8faf8 100%
+        );
+
+}
+
+.cases::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    right: -230px;
+    top: -220px;
+
+    border-radius:
+        48% 52% 60% 40%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(113, 155, 130, .10),
+            transparent 68%
+        );
+
+    transform: rotate(-25deg);
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   HERO — MÁS PROFUNDIDAD SIN ENSUCIAR
+========================================================= */
+
+.hero {
+
+    position: relative;
+
+    min-height: 560px;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            ellipse at 72% 45%,
+            rgba(168, 197, 178, .17) 0%,
+            rgba(168, 197, 178, .07) 22%,
+            transparent 48%
+        ),
+
+        radial-gradient(
+            ellipse at 95% 10%,
+            rgba(36, 91, 114, .07),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            110deg,
+            #ffffff 0%,
+            #f8faf9 48%,
+            #e9f0ee 100%
+        );
+
+}
+
+
+/* =========================================================
+   LÍNEAS DECORATIVAS MUY SUTILES
+========================================================= */
+
+.trajectory::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    right: -360px;
+    top: -100px;
+
+    border: 1px solid rgba(36, 91, 114, .055);
+
+    border-radius: 50%;
+
+    box-shadow:
+
+        0 0 0 35px rgba(36, 91, 114, .018),
+
+        0 0 0 70px rgba(36, 91, 114, .012);
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   CONTACTO — TEXTURA INTEGRADA
+========================================================= */
+
+.contact {
+
+    background:
+
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(168, 197, 178, .12),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            90deg,
+            #16485c 0%,
+            #1c566b 100%
+        );
+
+}
+
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 13px;
+
+    min-height: 44px;
+
+    padding: 0 21px;
+
+    border: 1px solid #a9c1c2;
+
+    border-radius: 30px;
+
+    background: transparent;
+
+    font-size: 9px;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    letter-spacing: 1.1px;
+
+    text-transform: uppercase;
+
+    color: var(--blue-dark);
+
+    transition:
+
+        background .35s ease,
+
+        color .35s ease,
+
+        border-color .35s ease,
+
+        transform .35s ease,
+
+        box-shadow .35s ease;
+
+}
+
+.btn span {
+
+    font-size: 16px;
+
+    line-height: 1;
+
+    transition:
+        transform .35s ease;
+
+}
+
+
+/* Hover verde recuperado */
+
+.btn:hover {
+
+    background: var(--green);
+
+    border-color: var(--green);
+
+    color: var(--white);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(113, 155, 130, .20);
+
+}
+
+.btn:hover span {
+
+    transform: translateX(5px);
+
+}
+
+
+/* Botón claro */
+
+.btn-light {
+
+    color: var(--white);
+
+    border-color:
+        rgba(255, 255, 255, .5);
+
+}
+
+.btn-light:hover {
+
+    color: var(--blue-dark);
+
+    background: var(--white);
+
+    border-color: var(--white);
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    z-index: 100;
+
+}
+
+.header-container {
+
+    height: 92px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+}
+
+.logo-symbol {
+
+    width: 43px;
+
+    font-family: var(--font-title);
+
+    font-size: 39px;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    letter-spacing: -5px;
+
+    color: var(--blue-dark);
+
+}
+
+.logo-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+}
+
+.doctor-name,
+.doctor-lastname {
+
+    font-size: 9px;
+
+    font-weight: 500;
+
+    line-height: 1.2;
+
+    letter-spacing: 2px;
+
+    color: var(--blue-dark);
+
+}
+
+.doctor-lastname {
+
+    font-size: 10px;
+
+}
+
+.doctor-specialty {
+
+    margin-top: 3px;
+
+    font-size: 7px;
+
+    line-height: 1.2;
+
+    letter-spacing: 1.8px;
+
+    color: var(--text-light);
+
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+
+    margin-right: 20px;
+
+}
+
+.nav-list {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 34px;
+
+}
+
+.nav-link {
+
+    position: relative;
+
+    display: inline-block;
+
+    padding: 10px 0;
+
+    font-size: 9px;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    color: var(--blue-dark);
+
+    transition:
+        color .3s ease;
+
+}
+
+.nav-link::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 2px;
+
+    width: 0;
+
+    height: 1px;
+
+    background: var(--green);
+
+    transition:
+        width .3s ease;
+
+}
+
+.nav-link:hover,
+.nav-link.active {
+
+    color: var(--green);
+
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+
+    width: 100%;
+
+}
+
+
+/* =========================================================
+   MENU MOBILE
+========================================================= */
+
+.menu-toggle {
+
+    display: none;
+
+    width: 40px;
+    height: 40px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+}
+
+.menu-toggle span {
+
+    display: block;
+
+    width: 24px;
+
+    height: 1px;
+
+    margin: 6px auto;
+
+    background: var(--blue-dark);
+
+    transition:
+
+        transform .3s ease,
+
+        opacity .3s ease;
+
+}
+
+
+/* =========================================================
+   HERO CONTENEDOR
+========================================================= */
+
+.hero-container {
+
+    position:
+        relative;
+
+    min-height:
+        560px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        34% 54% 12%;
+
+    align-items:
+        center;
+
+}
+
+
+/* =========================================================
+   HERO TEXTO
+========================================================= */
+
+.hero-content {
+
+    position:
+        relative;
+
+    z-index:
+        7;
+
+    padding-top:
+        65px;
+
+    padding-right:
+        25px;
+
+}
+
+
+/* =========================================================
+   FRASE PRINCIPAL
+========================================================= */
+
+.hero-quote {
+
+    max-width:
+        420px;
+
+    font-family:
+        var(--font-title);
+
+    font-size:
+        38px;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.18;
+
+    color:
+        var(--blue-dark);
+
+}
+
+
+/* =========================================================
+   LÍNEA DECORATIVA
+========================================================= */
+
+.hero-divider {
+
+    width:
+        42px;
+
+    height:
+        1px;
+
+    margin:
+        30px 0 26px;
+
+    background:
+        var(--green);
+
+}
+
+
+/* =========================================================
+   NOMBRE
+========================================================= */
+
+.hero-content h1 {
+
+    font-size:
+        16px;
+
+    font-weight:
+        600;
+
+    line-height:
+        1.8;
+
+    letter-spacing:
+        2.4px;
+
+    text-transform:
+        uppercase;
+
+    color:
+        var(--blue-dark);
+
+}
+
+
+/* =========================================================
+   ESPECIALIDAD
+========================================================= */
+
+.hero-specialty {
+
+    margin-top:
+        12px;
+
+    margin-bottom:
+        30px;
+
+    font-size:
+        13px;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.5;
+
+    letter-spacing:
+        2px;
+
+    color:
+        var(--text-light);
+
+}
+
+
+/* =========================================================
+   BOTÓN HERO
+========================================================= */
+
+.hero-content .btn {
+
+    min-height:
+        50px;
+
+    padding:
+        0 26px;
+
+    font-size:
+        11px;
+
+    letter-spacing:
+        1.2px;
+
+}
+
+
+/* =========================================================
+   PALABRAS HERO
+========================================================= */
+
+.hero-keywords span {
+
+    font-size:
+        11px;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.45;
+
+    letter-spacing:
+        1.5px;
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .hero-quote {
+
+        font-size:
+            34px;
+
+    }
+
+    .hero-content h1 {
+
+        font-size:
+            15px;
+
+    }
+
+    .hero-specialty {
+
+        font-size:
+            12px;
+
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .hero-content {
+
+        padding-top:
+            0;
+
+        padding-right:
+            0;
+
+    }
+
+    .hero-quote {
+
+        max-width:
+            390px;
+
+        font-size:
+            31px;
+
+    }
+
+    .hero-content h1 {
+
+        font-size:
+            14px;
+
+        line-height:
+            1.7;
+
+    }
+
+    .hero-specialty {
+
+        font-size:
+            11px;
+
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL PEQUEÑO
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .hero-quote {
+
+        max-width:
+            340px;
+
+        font-size:
+            28px;
+
+    }
+
+    .hero-content h1 {
+
+        font-size:
+            13px;
+
+        letter-spacing:
+            1.9px;
+
+    }
+
+    .hero-specialty {
+
+        font-size:
+            10px;
+
+        letter-spacing:
+            1.6px;
+
+    }
+
+}
+
+
+
+
+/* =========================================================
+   IMAGEN HERO
+========================================================= */
+
+.hero-image-container {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    min-height:
+        560px;
+
+    z-index:
+        3;
+
+}
+
+
+/* =========================================================
+   HERO — IMAGEN CON BORDES DIFUMINADOS
+========================================================= */
+
+.hero-image-wrapper {
+
+    position:
+        absolute;
+
+    top:
+        90px;
+
+    right:
+        0;
+
+    width:
+        92%;
+
+    height:
+        430px;
+
+    overflow:
+        hidden;
+
+
+    /* Curva superior izquierda */
+
+    border-radius:
+        0;
+
+    border-top-left-radius:
+        165px;
+
+
+    /* Difuminado lateral */
+
+    -webkit-mask-image:
+        linear-gradient(
+            to right,
+
+            transparent 0%,
+
+            rgba(0,0,0,.15) 5%,
+
+            #000 13%,
+
+            #000 88%,
+
+            rgba(0,0,0,.75) 94%,
+
+            transparent 100%
+        );
+
+    mask-image:
+        linear-gradient(
+            to right,
+
+            transparent 0%,
+
+            rgba(0,0,0,.15) 5%,
+
+            #000 13%,
+
+            #000 88%,
+
+            rgba(0,0,0,.75) 94%,
+
+            transparent 100%
+        );
+
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center 10%;
+    transform: scale(1);
+    border-radius: 0;
+    filter: saturate(.94);
+}
+
+
+
+
+/* =========================================================
+   TRANSPARENCIA HACIA EL TEXTO
+========================================================= */
+
+.hero-image-wrapper::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    background:
+
+        linear-gradient(
+            to left,
+
+            rgba(245, 247, 244, 0) 0%,
+
+            rgba(245, 247, 244, 0) 50%,
+
+            rgba(245, 247, 244, .05) 57%,
+
+            rgba(245, 247, 244, .14) 64%,
+
+            rgba(245, 247, 244, .30) 72%,
+
+            rgba(245, 247, 244, .52) 80%,
+
+            rgba(245, 247, 244, .73) 88%,
+
+            rgba(245, 247, 244, .90) 95%,
+
+            rgba(245, 247, 244, 1) 100%
+        ),
+
+        linear-gradient(
+            to bottom,
+
+            rgba(245, 247, 244, .10) 0%,
+
+            transparent 9%,
+
+            transparent 91%,
+
+            rgba(245, 247, 244, .55) 100%
+        );
+
+}
+
+
+/* =========================================================
+   CURVA HERO
+========================================================= */
+
+.hero-decoration {
+
+    position: absolute;
+
+    z-index: 10;
+
+    top: 78px;
+
+    left: 42%;
+
+    width: 80px;
+
+    height: 450px;
+
+    border-left:
+        10px solid var(--green);
+
+    border-radius:
+        50%;
+
+    transform:
+        rotate(11deg);
+
+    pointer-events: none;
+
+}
+
+.hero-decoration::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 9px;
+
+    width: 8px;
+
+    height: 450px;
+
+    border-left:
+        2px solid #87a8ad;
+
+    border-radius:
+        50%;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .hero-decoration {
+
+        left: 40%;
+
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .hero-decoration {
+
+        display: none;
+
+    }
+
+}
+
+
+
+
+/* =========================================================
+   PALABRAS HERO
+========================================================= */
+
+.hero-keywords {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    padding-left: 25px;
+
+    position: relative;
+
+    z-index: 7;
+
+}
+
+.hero-keywords span {
+
+    font-size: 9px;
+
+    font-weight: 500;
+
+    line-height: 1.3;
+
+    letter-spacing: 1.3px;
+
+    text-transform: uppercase;
+
+    color: var(--green);
+
+}
+
+.hero-keywords span:nth-child(2),
+.hero-keywords span:nth-child(4) {
+
+    color: var(--blue-dark);
+
+}
+
+.keyword-line {
+
+    width: 32px;
+
+    height: 1px;
+
+    margin-top: 8px;
+
+    background: #9cb1b4;
+
+}
+
+
+/* =========================================================
+   SOBRE MI
+========================================================= */
+
+.about {
+
+    padding-top: 70px;
+
+    padding-bottom: 75px;
+
+}
+
+.about-container {
+
+    display: grid;
+
+    grid-template-columns:
+        31% 34% 35%;
+
+    align-items: center;
+
+}
+
+
+/* =========================================================
+   IMAGEN ABOUT
+========================================================= */
+
+.about-image-container {
+
+    position: relative;
+
+    height: 320px;
+
+    overflow: hidden;
+
+    border-radius: 4px;
+
+    transition:
+
+        transform .4s ease,
+
+        box-shadow .4s ease;
+
+}
+
+.about-image-container:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 16px 35px rgba(23, 68, 91, .13);
+
+}
+
+.about-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition:
+        transform .6s ease;
+
+}
+
+.about-image-container:hover
+.about-image {
+
+    transform:
+        scale(1.035);
+
+}
+
+.about-image-container::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(255, 255, 255, .06);
+
+    pointer-events: none;
+
+}
+
+.about-image-decoration {
+
+    position: absolute;
+
+    right: -60px;
+
+    bottom: -75px;
+
+    z-index: 2;
+
+    width: 210px;
+
+    height: 190px;
+
+    border-radius:
+        70% 0 0 0;
+
+    background:
+        var(--green);
+
+    transform:
+        rotate(-18deg);
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   ABOUT TEXTO
+========================================================= */
+
+.about-content {
+
+    padding: 0 45px;
+
+}
+
+.about-content .section-title {
+
+    font-size: 38px;
+
+}
+
+.about-text {
+
+    max-width: 370px;
+
+    margin-bottom: 5px;
+
+    font-size: 12px;
+
+    line-height: 1.75;
+
+}
+
+.text-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 15px;
+
+    font-size: 9px;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    letter-spacing: 1.1px;
+
+    text-transform: uppercase;
+
+    color: var(--blue-dark);
+
+    transition:
+        color .3s ease;
+
+}
+
+.text-link span {
+
+    font-size: 16px;
+
+    line-height: 1;
+
+    transition:
+        transform .3s ease;
+
+}
+
+.text-link:hover {
+
+    color: var(--green);
+
+}
+
+.text-link:hover span {
+
+    transform:
+        translateX(5px);
+
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.about-features {
+
+    padding-left: 38px;
+
+    border-left:
+        1px solid #d4dfdd;
+
+}
+
+.feature {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    min-height: 65px;
+
+    border-bottom:
+        1px solid #e0e7e5;
+
+}
+
+.feature:last-child {
+
+    border-bottom: 0;
+
+}
+
+.feature-icon {
+
+    width: 35px;
+
+    flex-shrink: 0;
+
+    font-size: 23px;
+
+    line-height: 1;
+
+    text-align: center;
+
+    color: var(--green);
+
+}
+
+.feature-content h3 {
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    line-height: 1.5;
+
+    color: var(--blue-dark);
+
+}
+
+.feature-content p {
+
+    font-size: 9px;
+
+    line-height: 1.4;
+
+    color: var(--text-light);
+
+}
+
+
+/* =========================================================
+   ESPECIALIDADES
+========================================================= */
+
+.specialties {
+
+    padding: 80px 0;
+
+}
+
+.specialties-container {
+
+    display: grid;
+
+    grid-template-columns:
+        31% 69%;
+
+    align-items: center;
+
+    gap: 25px;
+
+}
+
+.specialties-intro {
+
+    padding-right: 35px;
+
+}
+
+.specialties-description {
+
+    max-width: 320px;
+
+    margin-bottom: 25px;
+
+    font-size: 12px;
+
+    line-height: 1.75;
+
+}
+
+
+/* =========================================================
+   CARDS ESPECIALIDADES
+========================================================= */
+
+.specialties-cards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+}
+
+.specialty-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 6px;
+
+    background:
+        var(--white);
+
+    box-shadow:
+        0 5px 25px rgba(31, 68, 83, .05);
+
+    transition:
+
+        transform .35s ease,
+
+        box-shadow .35s ease;
+
+}
+
+
+/* =========================================================
+   HOVER TARJETAS
+========================================================= */
+
+.specialty-card:hover {
+
+    transform:
+        translateY(-8px)
+        scale(1.01);
+
+    box-shadow:
+
+        0 18px 40px
+        rgba(31, 68, 83, .15),
+
+        0 4px 12px
+        rgba(113, 155, 130, .14);
+
+}
+
+.specialty-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border:
+        1px solid transparent;
+
+    border-radius:
+        inherit;
+
+    transition:
+        border-color .35s ease;
+
+    pointer-events: none;
+
+}
+
+.specialty-card:hover::after {
+
+    border-color:
+        rgba(113, 155, 130, .28);
+
+}
+
+
+/* =========================================================
+   IMAGEN ESPECIALIDAD
+========================================================= */
+
+.specialty-image {
+
+    height: 170px;
+
+    overflow: hidden;
+
+}
+
+.specialty-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform .6s ease,
+
+        filter .4s ease;
+
+}
+
+.specialty-card:hover
+.specialty-image img {
+
+    transform:
+        scale(1.07);
+
+    filter:
+        brightness(1.04);
+
+}
+
+
+/* =========================================================
+   CAJA BLANCA DE ESPECIALIDADES
+   MÁS PEQUEÑA
+========================================================= */
+
+.specialty-card-content {
+
+    position: relative;
+
+    min-height: 112px;
+
+    padding:
+        24px 26px 20px;
+
+    background:
+        rgba(255,255,255,.98);
+
+}
+
+.specialty-tag {
+
+    position: absolute;
+
+    top: -13px;
+
+    left: 18px;
+
+    padding:
+        7px 14px;
+
+    border-radius:
+        30px;
+
+    background:
+        var(--white);
+
+    font-size: 8px;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    color:
+        var(--blue-dark);
+
+    box-shadow:
+        0 3px 10px rgba(0,0,0,.07);
+
+}
+
+.specialty-card-content p {
+
+    max-width: 270px;
+
+    font-size: 9px;
+
+    line-height: 1.55;
+
+}
+
+.card-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 10px;
+
+    font-size: 8px;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    color:
+        var(--blue-dark);
+
+    transition:
+        color .3s ease;
+
+}
+
+.card-link span {
+
+    font-size: 14px;
+
+    line-height: 1;
+
+    transition:
+        transform .3s ease;
+
+}
+
+.card-link:hover {
+
+    color:
+        var(--green);
+
+}
+
+.card-link:hover span {
+
+    transform:
+        translateX(4px);
+
+}
+
+
+/* =========================================================
+   TRAYECTORIA
+========================================================= */
+
+.trajectory {
+
+    position: relative;
+
+    padding: 80px 0;
+
+    overflow: hidden;
+
+    background:
+        var(--white);
+
+}
+
+.trajectory-container {
+
+    display: grid;
+
+    grid-template-columns:
+        31% 39% 30%;
+
+    align-items: center;
+
+}
+
+.trajectory-intro {
+
+    padding-right: 45px;
+
+}
+
+.trajectory-intro p {
+
+    margin-bottom: 22px;
+
+    font-size: 11px;
+
+    line-height: 1.75;
+
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.timeline {
+
+    position: relative;
+
+    padding-left: 65px;
+
+    z-index: 5;
+
+}
+
+.timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 10px;
+
+    bottom: 10px;
+
+    left: 15px;
+
+    width: 2px;
+
+    background:
+        var(--green);
+
+    opacity: .65;
+
+}
+
+.timeline-item {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        45px minmax(0, 1fr);
+
+    gap: 15px;
+
+    min-height: 70px;
+
+}
+
+.timeline-year {
+
+    padding-top: 2px;
+
+    font-size: 9px;
+
+    line-height: 1.3;
+
+    color:
+        var(--green);
+
+}
+
+.timeline-dot {
+
+    position: absolute;
+
+    top: 1px;
+
+    left: -53px;
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background:
+        var(--green);
+
+    border:
+        2px solid var(--white);
+
+    box-shadow:
+        0 0 0 2px rgba(113,155,130,.30);
+
+    z-index: 4;
+
+    transition:
+        transform .3s ease,
+
+        box-shadow .3s ease;
+
+}
+
+.timeline-item:hover .timeline-dot {
+
+    transform:
+        scale(1.35);
+
+    box-shadow:
+
+        0 0 0 4px rgba(113,155,130,.15),
+
+        0 0 14px rgba(113,155,130,.28);
+
+}
+
+.timeline-content {
+
+    position: relative;
+
+    z-index: 3;
+
+}
+
+.timeline-content h3 {
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    line-height: 1.5;
+
+    color:
+        var(--blue-dark);
+
+    transition:
+        color .3s ease;
+
+}
+
+.timeline-item:hover
+.timeline-content h3 {
+
+    color:
+        var(--green);
+
+}
+
+.timeline-content p {
+
+    font-size: 8px;
+
+    line-height: 1.5;
+
+    color:
+        var(--text-light);
+
+}
+
+
+/* =========================================================
+   IMAGEN TRAYECTORIA
+   MÁS GRANDE
+========================================================= */
+
+.trajectory-image {
+
+    width: 100%;
+
+    height: 320px;
+
+    margin-left: 15px;
+
+    overflow: hidden;
+
+    border-top-left-radius:
+        130px;
+
+    border-bottom-left-radius:
+        130px;
+
+    box-shadow:
+        0 10px 28px rgba(23,68,91,.07);
+
+    transition:
+
+        transform .4s ease,
+
+        box-shadow .4s ease;
+
+}
+
+.trajectory-image:hover {
+
+    transform:
+        translateY(-6px);
+
+    box-shadow:
+        0 20px 38px rgba(23,68,91,.14);
+
+}
+
+.trajectory-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition:
+        transform .6s ease;
+
+}
+
+.trajectory-image:hover img {
+
+    transform:
+        scale(1.04);
+
+}
+
+
+/* =========================================================
+   CASOS CLÍNICOS
+========================================================= */
+
+.cases {
+
+    padding: 65px 0;
+
+}
+
+.cases-container {
+
+    display: grid;
+
+    grid-template-columns:
+        31% 69%;
+
+    align-items: center;
+
+}
+
+.cases-intro {
+
+    padding-right: 40px;
+
+}
+
+.cases-intro .section-title {
+
+    font-size: 36px;
+
+}
+
+.cases-intro > p {
+
+    max-width: 320px;
+
+    margin-bottom: 23px;
+
+    font-size: 10px;
+
+    line-height: 1.75;
+
+}
+
+
+/* =========================================================
+   GALERÍA CASOS
+========================================================= */
+
+.cases-gallery {
+
+    display: grid;
+
+    grid-template-columns:
+        1.25fr .7fr .7fr;
+
+    grid-template-rows:
+        90px 90px;
+
+    gap: 8px;
+
+    height: 188px;
+
+}
+
+.case-image {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 4px;
+
+    transition:
+
+        transform .35s ease,
+
+        box-shadow .35s ease;
+
+}
+
+.case-image:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 12px 26px rgba(23,68,91,.13);
+
+}
+
+.case-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform .5s ease,
+
+        filter .4s ease;
+
+}
+
+.case-image:hover img {
+
+    transform:
+        scale(1.05);
+
+    filter:
+        brightness(1.03);
+
+}
+
+.case-large {
+
+    grid-row:
+        1 / 3;
+
+}
+
+
+/* =========================================================
+   CONTACTO
+========================================================= */
+
+.contact {
+
+    position: relative;
+
+    min-height: 175px;
+
+    overflow: hidden;
+
+    color: var(--white);
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #16485c 0%,
+            #1c566b 100%
+        );
+
+}
+
+.contact::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: -120px;
+
+    bottom: -180px;
+
+    width: 450px;
+
+    height: 450px;
+
+    border:
+        90px solid rgba(118, 163, 144, .35);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+}
+
+.contact-container {
+
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 175px;
+
+    display: grid;
+
+    grid-template-columns:
+        30% 35% 35%;
+
+    align-items: center;
+
+}
+
+.contact-title {
+
+    padding-right: 40px;
+
+    border-right:
+        1px solid rgba(255,255,255,.2);
+
+}
+
+.contact-title .section-label {
+
+    color:
+        #a9c6b5;
+
+}
+
+.contact-title h2 {
+
+    font-family:
+        var(--font-title);
+
+    font-size:
+        31px;
+
+    font-weight:
+        400;
+
+    line-height:
+        .98;
+
+}
+
+.contact-message {
+
+    padding-left:
+        50px;
+
+}
+
+.contact-message p {
+
+    max-width:
+        220px;
+
+    margin-bottom:
+        12px;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.7;
+
+    color:
+        rgba(255,255,255,.8);
+
+}
+
+.contact-information {
+
+    padding-left:
+        35px;
+
+}
+
+.contact-item {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        14px;
+
+    margin:
+        9px 0;
+
+    font-size:
+        9px;
+
+    line-height:
+        1.4;
+
+    color:
+        rgba(255,255,255,.75);
+
+}
+
+.contact-icon {
+
+    width:
+        18px;
+
+    flex-shrink:
+        0;
+
+    text-align:
+        center;
+
+    color:
+        #a9c6b5;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    padding:
+        25px 0;
+
+    background:
+        var(--white);
+
+}
+
+.footer-container {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+}
+
+.footer-logo {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+}
+
+/* =========================================================
+   LOGO DEL HEADER
+========================================================= */
+.header-logo-image {
+    width: 130px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.footer-logo-image {
+    width: 180px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   CONOCE MÁS — 6 TARJETAS
+   ESTE BLOQUE DEBE IR AL FINAL DEL CSS
+========================================================= */
+
+.more-specialties-dialog {
+    width: min(980px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 50px;
+}
+
+
+/* =========================================================
+   GRID DE 6 TARJETAS
+========================================================= */
+
+.more-specialties-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+    width: 100%;
+}
+
+
+/* =========================================================
+   TARJETAS
+========================================================= */
+
+.more-specialty-item {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 175px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MUY IMPORTANTE:
+   ANULAR REGLA QUE HACÍA QUE LA ÚLTIMA TARJETA OCUPARA
+   TODA LA FILA
+========================================================= */
+
+.more-specialty-item:last-child {
+    grid-column: auto !important;
+    max-width: none !important;
+    width: 100% !important;
+    justify-self: stretch !important;
+}
+
+
+/* =========================================================
+   ÍCONOS
+========================================================= */
+
+.more-specialty-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    border-radius: 50%;
+    background: rgba(113, 155, 130, .12);
+    color: var(--green);
+    font-size: 20px;
+}
+
+.more-specialty-icon svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+
+/* =========================================================
+   TÍTULOS
+========================================================= */
+
+.more-specialty-item h3 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    color: var(--blue-dark);
+}
+
+
+/* =========================================================
+   SERVICIOS CON VIÑETAS
+========================================================= */
+
+.more-specialty-service {
+    display: flex !important;
+    align-items: flex-start;
+    gap: 9px;
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text-light);
+}
+
+.more-specialty-service:last-child {
+    margin-bottom: 0;
+}
+
+.service-bullet {
+    flex: 0 0 auto;
+    color: var(--green);
+    font-size: 17px;
+    line-height: 1.35;
+    font-weight: 700;
+}
+
+.more-specialty-service span:last-child {
+    flex: 1;
+}
+
+
+/* =========================================================
+   PREGUNTA + BOTÓN
+========================================================= */
+
+.more-specialties-cta {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    width: 100%;
+    margin-top: 32px;
+    padding-top: 25px;
+    border-top: 1px solid #dce6e3;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.more-specialties-cta p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--blue-dark);
+}
+
+.more-specialties-cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 13px 22px;
+    border: 1px solid var(--green);
+    background: var(--green);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+.more-specialties-cta-button:hover {
+    transform: translateY(-3px);
+    background: var(--blue-dark);
+    box-shadow: 0 10px 25px rgba(23,68,91,.16);
+}
+
+.more-specialties-cta-button span {
+    font-size: 16px;
+    line-height: 1;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 750px) {
+
+    .more-specialties-dialog {
+        padding: 40px 30px;
+    }
+
+    .more-specialties-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .more-specialties-cta {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 500px) {
+
+    .more-specialties-dialog {
+        padding: 35px 22px 25px;
+    }
+
+    .more-specialty-item {
+        padding: 22px;
+    }
+
+    .more-specialties-cta {
+        margin-top: 25px;
+        padding-top: 22px;
+    }
+
+    .more-specialties-cta p {
+        font-size: 13px;
+    }
+
+    .more-specialties-cta-button {
+        width: 100%;
+    }
+
+}
+
+
+
+/* =========================================================
+   VIÑETAS — CONOCE MÁS
+========================================================= */
+
+.more-specialty-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.more-specialty-list li {
+    position: relative;
+    margin-bottom: 9px;
+    padding-left: 17px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text-light);
+}
+
+.more-specialty-list li:last-child {
+    margin-bottom: 0;
+}
+
+.more-specialty-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--green);
+}
+
+
+/* =========================================================
+   ÍCONO GRÁFICO DEL +
+========================================================= */
+
+.more-specialty-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    border-radius: 50%;
+    background: rgba(113, 155, 130, .12);
+    color: var(--green);
+    font-size: 20px;
+}
+
+.more-specialty-icon svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+
+.footer-logo .logo-symbol {
+
+    font-size:
+        32px;
+
+}
+
+.footer-slogan {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        15px;
+
+    margin-left:
+        auto;
+
+    margin-right:
+        40px;
+
+}
+
+.footer-slogan span {
+
+    font-family:
+        var(--font-title);
+
+    font-size:
+        13px;
+
+    line-height:
+        1;
+
+    color:
+        var(--text-light);
+
+}
+
+.footer-line {
+
+    width:
+        40px;
+
+    height:
+        1px;
+
+    background:
+        #c6d4d2;
+
+}
+
+.social-links {
+
+    display:
+        flex;
+
+    gap:
+        13px;
+
+}
+
+.social-links a {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        20px;
+
+    height:
+        20px;
+
+    border:
+        1px solid #b7c8c7;
+
+    border-radius:
+        50%;
+
+    font-size:
+        10px;
+
+    line-height:
+        1;
+
+    color:
+        var(--blue-dark);
+
+    transition:
+
+        background .3s ease,
+
+        color .3s ease,
+
+        border-color .3s ease,
+
+        transform .3s ease;
+
+}
+
+.social-links a:hover {
+
+    border-color:
+        var(--blue-dark);
+
+    color:
+        var(--white);
+
+    background:
+        var(--blue-dark);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .container {
+
+        width:
+            calc(100% - 50px);
+
+    }
+
+    .nav-list {
+
+        gap:
+            20px;
+
+    }
+
+    .hero-container {
+
+        grid-template-columns:
+            32% 58% 10%;
+
+    }
+
+    .hero-image-wrapper {
+
+        top:
+            60px;
+
+        height:
+            500px;
+
+    }
+
+    .hero-decoration {
+
+        left:
+            34%;
+
+    }
+
+    .about-container {
+
+        grid-template-columns:
+            30% 38% 32%;
+
+    }
+
+    .about-content {
+
+        padding:
+            0 30px;
+
+    }
+
+    .about-features {
+
+        padding-left:
+            25px;
+
+    }
+
+    .trajectory-container {
+
+        grid-template-columns:
+            31% 41% 28%;
+
+    }
+
+    .trajectory-image {
+
+        height:
+            290px;
+
+        margin-left:
+            10px;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET / MÓVIL
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .container {
+
+        width:
+            calc(100% - 40px);
+
+    }
+
+    .header-container {
+
+        height:
+            75px;
+
+    }
+
+
+    /* =====================================================
+       NAV
+    ===================================================== */
+
+    .navbar {
+
+        position:
+            fixed;
+
+        top:
+            75px;
+
+        left:
+            0;
+
+        width:
+            100%;
+
+        padding:
+            25px;
+
+        background:
+            rgba(255,255,255,.98);
+
+        transform:
+            translateY(-150%);
+
+        opacity:
+            0;
+
+        pointer-events:
+            none;
+
+        transition:
+
+            transform .35s ease,
+
+            opacity .35s ease;
+
+        box-shadow:
+            0 10px 25px rgba(0,0,0,.08);
+
+    }
+
+    .navbar.open {
+
+        transform:
+            translateY(0);
+
+        opacity:
+            1;
+
+        pointer-events:
+            auto;
+
+    }
+
+    .nav-list {
+
+        flex-direction:
+            column;
+
+        gap:
+            10px;
+
+    }
+
+    .nav-link {
+
+        display:
+            block;
+
+        padding:
+            12px;
+
+        text-align:
+            center;
+
+    }
+
+    .menu-toggle {
+
+        display:
+            block;
+
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+
+        min-height:
+            750px;
+
+    }
+
+    .hero-container {
+
+        min-height:
+            750px;
+
+        display:
+            grid;
+
+        grid-template-columns:
+            1fr;
+
+        grid-template-rows:
+            auto 440px;
+
+        padding-top:
+            110px;
+
+    }
+
+    .hero-content {
+
+        padding-top:
+            0;
+
+        text-align:
+            center;
+
+    }
+
+    .hero-quote {
+
+        margin-inline:
+            auto;
+
+    }
+
+    .hero-divider {
+
+        margin:
+            20px auto;
+
+    }
+
+    .hero-image-container {
+
+        position:
+            absolute;
+
+        top:
+            0;
+
+        right:
+            0;
+
+        width:
+            100%;
+
+        height:
+            100%;
+
+        min-height:
+            750px;
+
+        opacity:
+            .32;
+
+        z-index:
+            1;
+
+    }
+
+    .hero-image-wrapper {
+
+        top:
+            75px;
+
+        width:
+            100%;
+
+        height:
+            calc(100% - 75px);
+
+        border-top-left-radius:
+            120px;
+
+    }
+
+    .hero-content {
+
+        z-index:
+            6;
+
+    }
+
+    .hero-keywords,
+    .hero-decoration {
+
+        display:
+            none;
+
+    }
+
+
+    /* =====================================================
+       ABOUT
+    ===================================================== */
+
+    .about-container {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap:
+            35px;
+
+    }
+
+    .about-image-container {
+
+        height:
+            360px;
+
+        grid-row:
+            span 2;
+
+    }
+
+    .about-features {
+
+        grid-column:
+            2;
+
+        border-left:
+            0;
+
+    }
+
+
+    /* =====================================================
+       SPECIALTIES
+    ===================================================== */
+
+    .specialties-container {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .specialties-intro {
+
+        padding-right:
+            0;
+
+    }
+
+
+    /* =====================================================
+       TRAYECTORIA
+    ===================================================== */
+
+    .trajectory-container {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+    .trajectory-image {
+
+        display:
+            none;
+
+    }
+
+
+    /* =====================================================
+       CASES
+    ===================================================== */
+
+    .cases-container {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            35px;
+
+    }
+
+    .cases-intro {
+
+        padding-right:
+            0;
+
+    }
+
+
+    /* =====================================================
+       CONTACT
+    ===================================================== */
+
+    .contact-container {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap:
+            25px;
+
+        padding-top:
+            30px;
+
+        padding-bottom:
+            30px;
+
+    }
+
+    .contact-information {
+
+        padding-left:
+            0;
+
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .container {
+
+        width:
+            calc(100% - 35px);
+
+    }
+
+    .section {
+
+        padding:
+            60px 0;
+
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .header {
+
+        background:
+            rgba(255,255,255,.95);
+
+        backdrop-filter:
+            blur(10px);
+
+    }
+
+    .logo-text {
+
+        display:
+            none;
+
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+
+        min-height:
+            720px;
+
+    }
+
+    .hero-container {
+
+        min-height:
+            720px;
+
+        grid-template-rows:
+            auto 390px;
+
+        padding-top:
+            105px;
+
+    }
+
+    .hero-quote {
+
+        max-width:
+            290px;
+
+        font-size:
+            25px;
+
+    }
+
+    .hero-image-container {
+
+        width:
+            100%;
+
+        height:
+            100%;
+
+        min-height:
+            720px;
+
+        opacity:
+            .27;
+
+    }
+
+    .hero-image-wrapper {
+
+        top:
+            75px;
+
+        height:
+            calc(100% - 75px);
+
+        border-top-left-radius:
+            100px;
+
+    }
+
+
+    /* =====================================================
+       ABOUT
+    ===================================================== */
+
+    .about-container {
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        gap:
+            35px;
+
+    }
+
+    .about-image-container {
+
+        width:
+            100%;
+
+        height:
+            300px;
+
+    }
+
+    .about-content {
+
+        padding:
+            0;
+
+    }
+
+    .about-content .section-title {
+
+        font-size:
+            35px;
+
+    }
+
+    .about-features {
+
+        width:
+            100%;
+
+        padding-top:
+            10px;
+
+        border-top:
+            1px solid #d4dfdd;
+
+    }
+
+
+    /* =====================================================
+       SPECIALTIES
+    ===================================================== */
+
+    .specialties {
+
+        padding:
+            60px 0;
+
+    }
+
+    .specialties-cards {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .specialty-image {
+
+        height:
+            190px;
+
+    }
+
+    .specialty-card-content {
+
+        min-height:
+            125px;
+
+        padding:
+            24px 24px 20px;
+
+    }
+
+
+    /* =====================================================
+       TRAYECTORIA
+    ===================================================== */
+
+    .trajectory-container {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .trajectory-intro {
+
+        padding-right:
+            0;
+
+        margin-bottom:
+            40px;
+
+    }
+
+
+    /* =====================================================
+       CASES
+    ===================================================== */
+
+    .cases-gallery {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        grid-template-rows:
+
+            160px
+            100px
+            100px;
+
+        height:
+            auto;
+
+    }
+
+    .case-large {
+
+        grid-column:
+            1 / 3;
+
+        grid-row:
+            1;
+
+    }
+
+    .case-image:nth-child(2) {
+
+        grid-column:
+            1;
+
+        grid-row:
+            2;
+
+    }
+
+    .case-image:nth-child(3) {
+
+        grid-column:
+            2;
+
+        grid-row:
+            2;
+
+    }
+
+    .case-image:nth-child(4) {
+
+        grid-column:
+            1;
+
+        grid-row:
+            3;
+
+    }
+
+    .case-image:nth-child(5) {
+
+        grid-column:
+            2;
+
+        grid-row:
+            3;
+
+    }
+
+    .case-image:nth-child(n + 6) {
+
+        display:
+            none;
+
+    }
+
+
+    /* =====================================================
+       CONTACT
+    ===================================================== */
+
+    .contact-container {
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        padding-top:
+            40px;
+
+        padding-bottom:
+            40px;
+
+    }
+
+    .contact-title {
+
+        width:
+            100%;
+
+        padding-right:
+            0;
+
+        padding-bottom:
+            20px;
+
+        border-right:
+            0;
+
+        border-bottom:
+            1px solid rgba(255,255,255,.2);
+
+    }
+
+    .contact-message {
+
+        padding-left:
+            0;
+
+    }
+
+    .contact-information {
+
+        padding-left:
+            0;
+
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .footer-container {
+
+        flex-direction:
+            column;
+
+        gap:
+            25px;
+
+        text-align:
+            center;
+
+    }
+
+    .footer-slogan {
+
+        margin:
+            0;
+
+    }
+
+
+    /* =====================================================
+       DIENTES MÓVIL
+    ===================================================== */
+
+    .floating-tooth,
+    .floating-molar {
+
+        opacity:
+            .11;
+
+    }
+
+    .tooth-1 {
+
+        left:
+            3%;
+
+    }
+
+    .tooth-2 {
+
+        right:
+            3%;
+
+    }
+
+    .tooth-3,
+    .molar-1,
+    .molar-3 {
+
+        display:
+            none;
+
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL PEQUEÑO
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .container {
+
+        width:
+            calc(100% - 30px);
+
+    }
+
+    .hero {
+
+        min-height:
+            680px;
+
+    }
+
+    .hero-container {
+
+        min-height:
+            680px;
+
+        grid-template-rows:
+            auto 350px;
+
+    }
+
+    .hero-image-container {
+
+        height:
+            350px;
+
+        min-height:
+            350px;
+
+    }
+
+    .hero-image-wrapper {
+
+        top:
+            75px;
+
+        height:
+            275px;
+
+        border-top-left-radius:
+            90px;
+
+    }
+
+    .hero-quote {
+
+        font-size:
+            23px;
+
+    }
+
+    .section-title {
+
+        font-size:
+            34px;
+
+    }
+
+    .cases-gallery {
+
+        grid-template-rows:
+
+            140px
+            90px
+            90px;
+
+    }
+
+    .about-image-container {
+
+        height:
+            270px;
+
+    }
+
+    .specialty-image {
+
+        height:
+            175px;
+
+    }
+
+    .specialty-card-content {
+
+        min-height:
+            120px;
+
+    }
+
+}
+
+
+/* =========================================================
+   ACCESIBILIDAD
+========================================================= */
+
+a:focus-visible,
+button:focus-visible {
+
+    outline:
+        2px solid var(--green);
+
+    outline-offset:
+        4px;
+
+}
+
+
+/* =========================================================
+   SELECCIÓN
+========================================================= */
+
+::selection {
+
+    background:
+        var(--green);
+
+    color:
+        var(--white);
+
+}
+
+
+/* =========================================================
+   DIENTES Y MUELITAS FLOTANTES
+   VISIBLES EN TODAS LAS SECCIONES
+========================================================= */
+
+.dental-background {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        4;
+
+    overflow:
+        hidden;
+
+    pointer-events:
+        none;
+
+}
+
+
+/*
+   El contenido sigue por encima
+*/
+
+.header {
+
+    position:
+        absolute;
+
+    z-index:
+        100;
+
+}
+
+.hero,
+.about,
+.specialties,
+.trajectory,
+.cases,
+.contact,
+.footer {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+}
+
+
+/*
+   Contenido interno por encima
+   de dientes y muelitas
+*/
+
+.hero-container,
+.about-container,
+.specialties-container,
+.trajectory-container,
+.cases-container,
+.contact-container,
+.footer-container {
+
+    position:
+        relative;
+
+    z-index:
+        5;
+
+}
+
+
+/* =========================================================
+   PIEZAS DENTALES
+========================================================= */
+
+.floating-tooth,
+.floating-molar {
+
+    position:
+        absolute;
+
+    display:
+        block;
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    color:
+        var(--green);
+
+    opacity:
+        .18;
+
+    filter:
+        blur(.1px);
+
+    animation:
+
+        dentalFloat 12s ease-in-out infinite,
+
+        dentalRotate 16s ease-in-out infinite;
+
+}
+
+.floating-tooth svg,
+.floating-molar svg {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    fill:
+        rgba(113,155,130,.025);
+
+    stroke:
+        currentColor;
+
+    stroke-width:
+        1.5;
+
+    stroke-linecap:
+        round;
+
+    stroke-linejoin:
+        round;
+
+}
+
+
+/* =========================================================
+   DIENTES
+========================================================= */
+
+.tooth-1 {
+
+    top:
+        12%;
+
+    left:
+        6%;
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    opacity:
+        .17;
+
+    animation-delay:
+        -2s;
+
+}
+
+.tooth-2 {
+
+    top:
+        28%;
+
+    right:
+        7%;
+
+    width:
+        52px;
+
+    height:
+        52px;
+
+    color:
+        var(--blue-light);
+
+    opacity:
+        .14;
+
+    animation-delay:
+        -6s;
+
+}
+
+.tooth-3 {
+
+    top:
+        48%;
+
+    left:
+        5%;
+
+    width:
+        34px;
+
+    height:
+        34px;
+
+    color:
+        var(--green);
+
+    opacity:
+        .15;
+
+    animation-delay:
+        -9s;
+
+}
+
+.tooth-4 {
+
+    top:
+        72%;
+
+    right:
+        8%;
+
+    width:
+        44px;
+
+    height:
+        44px;
+
+    color:
+        var(--blue);
+
+    opacity:
+        .13;
+
+    animation-delay:
+        -4s;
+
+}
+
+
+/* =========================================================
+   MUELAS
+========================================================= */
+
+.molar-1 {
+
+    top:
+        20%;
+
+    left:
+        23%;
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    color:
+        var(--green-light);
+
+    opacity:
+        .18;
+
+    animation-delay:
+        -5s;
+
+}
+
+.molar-2 {
+
+    top:
+        42%;
+
+    right:
+        22%;
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    color:
+        var(--green);
+
+    opacity:
+        .16;
+
+    animation-delay:
+        -8s;
+
+}
+
+.molar-3 {
+
+    top:
+        62%;
+
+    left:
+        22%;
+
+    width:
+        44px;
+
+    height:
+        44px;
+
+    color:
+        var(--blue-light);
+
+    opacity:
+        .14;
+
+    animation-delay:
+        -3s;
+
+}
+
+.molar-4 {
+
+    top:
+        86%;
+
+    right:
+        25%;
+
+    width:
+        34px;
+
+    height:
+        34px;
+
+    color:
+        var(--green);
+
+    opacity:
+        .15;
+
+    animation-delay:
+        -7s;
+
+}
+
+
+/* =========================================================
+   MOVIMIENTO DIENTES / MUELAS
+========================================================= */
+
+@keyframes dentalFloat {
+
+    0% {
+
+        transform:
+            translate3d(0, 0, 0);
+
+    }
+
+    25% {
+
+        transform:
+            translate3d(12px, -15px, 0);
+
+    }
+
+    50% {
+
+        transform:
+            translate3d(-8px, -27px, 0);
+
+    }
+
+    75% {
+
+        transform:
+            translate3d(-15px, -10px, 0);
+
+    }
+
+    100% {
+
+        transform:
+            translate3d(0, 0, 0);
+
+    }
+
+}
+
+@keyframes dentalRotate {
+
+    0% {
+
+        rotate:
+            -5deg;
+
+    }
+
+    50% {
+
+        rotate:
+            6deg;
+
+    }
+
+    100% {
+
+        rotate:
+            -5deg;
+
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL — DENTAL
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .floating-tooth,
+    .floating-molar {
+
+        opacity:
+            .11;
+
+    }
+
+    .tooth-1 {
+
+        left:
+            3%;
+
+    }
+
+    .tooth-2 {
+
+        right:
+            3%;
+
+    }
+
+    .tooth-3,
+    .molar-1,
+    .molar-3 {
+
+        display:
+            none;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCIR MOVIMIENTO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .floating-tooth,
+    .floating-molar {
+
+        animation:
+            none;
+
+    }
+
+}
+
+/* =========================================================
+   VENTANAS EMERGENTES — ESPECIALIDADES
+========================================================= */
+
+body.modal-open {
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CONTENEDOR GENERAL DEL MODAL
+========================================================= */
+
+.specialty-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
+}
+
+
+/* Modal abierto */
+
+.specialty-modal.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   FONDO OSCURO
+========================================================= */
+
+.specialty-modal-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(23, 68, 91, .62);
+
+    backdrop-filter:
+        blur(7px);
+
+    -webkit-backdrop-filter:
+        blur(7px);
+}
+
+
+/* =========================================================
+   VENTANA PRINCIPAL
+========================================================= */
+
+.specialty-modal-dialog {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(900px, 100%);
+
+    max-height: 90vh;
+
+    display: grid;
+
+    grid-template-columns:
+        48% 52%;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background:
+        var(--white);
+
+    box-shadow:
+        0 30px 80px
+        rgba(23, 68, 91, .28);
+
+    transform:
+        translateY(25px)
+        scale(.96);
+
+    transition:
+        transform .35s ease;
+}
+
+
+/* Animación al abrir */
+
+.specialty-modal.active
+.specialty-modal-dialog {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =========================================================
+   BOTÓN CERRAR
+========================================================= */
+
+.specialty-modal-close {
+    position: absolute;
+
+    top: 16px;
+    right: 16px;
+
+    z-index: 10;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, .94);
+
+    color:
+        var(--blue-dark);
+
+    font-size: 27px;
+
+    font-weight: 300;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 15px
+        rgba(23, 68, 91, .12);
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.specialty-modal-close:hover {
+    background:
+        var(--green);
+
+    color:
+        var(--white);
+
+    transform:
+        rotate(90deg);
+
+    box-shadow:
+        0 7px 18px
+        rgba(113, 155, 130, .25);
+}
+
+
+/* =========================================================
+   IMAGEN DE LA VENTANA
+========================================================= */
+
+.specialty-modal-image {
+    min-height: 450px;
+
+    overflow: hidden;
+
+    background:
+        #edf3f0;
+}
+
+.specialty-modal-image img {
+    width: 100%;
+    height: 100%;
+
+    min-height: 450px;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    display: block;
+
+    transition:
+        transform .6s ease;
+}
+
+
+/* =========================================================
+   CONTENIDO DE LA VENTANA
+========================================================= */
+
+.specialty-modal-content {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding:
+        55px 55px 55px 45px;
+
+    background:
+        var(--white);
+}
+
+
+/* =========================================================
+   ETIQUETA
+========================================================= */
+
+.specialty-modal-label {
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-size: 9px;
+
+    font-weight: 500;
+
+    line-height: 1.3;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color:
+        var(--green);
+}
+
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+.specialty-modal-content h2 {
+    margin-bottom: 22px;
+
+    font-family:
+        var(--font-title);
+
+    font-size: 52px;
+
+    font-weight: 500;
+
+    line-height: .95;
+
+    color:
+        var(--blue-dark);
+}
+
+
+/* =========================================================
+   DESCRIPCIÓN
+========================================================= */
+
+.specialty-modal-content p {
+    max-width: 390px;
+
+    font-size: 13px;
+
+    font-weight: 400;
+
+    line-height: 1.85;
+
+    color:
+        var(--text);
+}
+
+
+/* =========================================================
+   LÍNEA DECORATIVA
+========================================================= */
+
+.specialty-modal-content::after {
+    content: "";
+
+    width: 45px;
+    height: 1px;
+
+    margin-top: 28px;
+
+    background:
+        var(--green);
+}
+
+
+/* =========================================================
+   EFECTO AL PASAR SOBRE LA IMAGEN
+========================================================= */
+
+.specialty-modal-image:hover img {
+    transform:
+        scale(1.03);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .specialty-modal {
+        padding: 25px;
+    }
+
+    .specialty-modal-dialog {
+
+        grid-template-columns:
+            1fr;
+
+        max-height:
+            90vh;
+
+        overflow-y:
+            auto;
+    }
+
+    .specialty-modal-image {
+
+        height:
+            280px;
+
+        min-height:
+            280px;
+    }
+
+    .specialty-modal-image img {
+
+        height:
+            280px;
+
+        min-height:
+            280px;
+    }
+
+    .specialty-modal-content {
+
+        padding:
+            38px 35px 40px;
+    }
+
+    .specialty-modal-content h2 {
+
+        font-size:
+            44px;
+    }
+
+    .specialty-modal-content p {
+
+        max-width:
+            100%;
+
+        font-size:
+            12px;
+    }
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .specialty-modal {
+
+        padding:
+            15px;
+    }
+
+    .specialty-modal-dialog {
+
+        width:
+            100%;
+
+        max-height:
+            92vh;
+
+        border-radius:
+            14px;
+    }
+
+    .specialty-modal-close {
+
+        top:
+            12px;
+
+        right:
+            12px;
+
+        width:
+            36px;
+
+        height:
+            36px;
+
+        font-size:
+            24px;
+    }
+
+    .specialty-modal-image {
+
+        height:
+            210px;
+
+        min-height:
+            210px;
+    }
+
+    .specialty-modal-image img {
+
+        height:
+            210px;
+
+        min-height:
+            210px;
+    }
+
+    .specialty-modal-content {
+
+        padding:
+            28px 24px 32px;
+    }
+
+    .specialty-modal-label {
+
+        font-size:
+            8px;
+    }
+
+    .specialty-modal-content h2 {
+
+        margin-bottom:
+            17px;
+
+        font-size:
+            38px;
+    }
+
+    .specialty-modal-content p {
+
+        font-size:
+            12px;
+
+        line-height:
+            1.7;
+    }
+
+    .specialty-modal-content::after {
+
+        margin-top:
+            22px;
+    }
+}
+
+/* =========================================================
+   VENTANA EMERGENTE — CONOCE MÁS
+========================================================= */
+
+.more-specialties-modal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
+}
+
+.more-specialties-modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   FONDO OSCURO Y DIFUMINADO
+========================================================= */
+
+.more-specialties-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        rgba(23, 68, 91, .62);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* =========================================================
+   VENTANA PRINCIPAL
+========================================================= */
+
+.more-specialties-dialog {
+    position: relative;
+    z-index: 2;
+
+    width: min(920px, 100%);
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 55px;
+
+    border-radius: 20px;
+
+    background: var(--white);
+
+    box-shadow:
+        0 30px 80px rgba(23, 68, 91, .28);
+
+    transform:
+        translateY(30px)
+        scale(.96);
+
+    transition:
+        transform .35s ease;
+}
+
+.more-specialties-modal.active
+.more-specialties-dialog {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =========================================================
+   BOTÓN CERRAR
+========================================================= */
+
+.more-specialties-close {
+    position: absolute;
+
+    top: 17px;
+    right: 17px;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: #f1f5f3;
+
+    color: var(--blue-dark);
+
+    font-size: 26px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.more-specialties-close:hover {
+    background: var(--green);
+
+    color: var(--white);
+
+    transform: rotate(90deg);
+
+    box-shadow:
+        0 8px 18px rgba(113, 155, 130, .25);
+}
+
+
+/* =========================================================
+   ENCABEZADO
+========================================================= */
+
+.more-specialties-header {
+    max-width: 650px;
+
+    margin-bottom: 35px;
+}
+
+.more-specialties-header span {
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-size: 9px;
+    font-weight: 500;
+
+    line-height: 1.3;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: var(--green);
+}
+
+.more-specialties-header h2 {
+    margin-bottom: 17px;
+
+    font-family: var(--font-title);
+
+    font-size: 48px;
+    font-weight: 500;
+
+    line-height: .98;
+
+    color: var(--blue-dark);
+}
+
+.more-specialties-header p {
+    max-width: 600px;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+    color: var(--text);
+}
+
+
+/* =========================================================
+   GRID DE SERVICIOS
+========================================================= */
+
+.more-specialties-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+}
+
+
+/* =========================================================
+   TARJETAS INTERNAS
+========================================================= */
+
+.more-specialty-item {
+    position: relative;
+
+    padding: 27px;
+
+    border:
+        1px solid #dce6e3;
+
+    border-radius: 12px;
+
+    background:
+        #fbfdfc;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease,
+        background .3s ease;
+}
+
+.more-specialty-item:hover {
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(113, 155, 130, .35);
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 15px 32px
+        rgba(23, 68, 91, .10);
+}
+
+
+/* =========================================================
+   ICONOS
+========================================================= */
+
+.more-specialty-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 15px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(113, 155, 130, .12);
+
+    color:
+        var(--green);
+
+    font-size: 20px;
+
+    transition:
+        transform .3s ease,
+        background .3s ease;
+}
+
+.more-specialty-item:hover
+.more-specialty-icon {
+    transform:
+        scale(1.08);
+
+    background:
+        rgba(113, 155, 130, .18);
+}
+
+
+/* =========================================================
+   TÍTULOS
+========================================================= */
+
+.more-specialty-item h3 {
+    margin-bottom: 9px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    letter-spacing: .5px;
+
+    color:
+        var(--blue-dark);
+}
+
+
+/* =========================================================
+   TEXTO
+========================================================= */
+
+.more-specialty-item p {
+    font-size: 10px;
+
+    line-height: 1.7;
+
+    color:
+        var(--text-light);
+}
+
+
+/* =========================================================
+   LÍNEA DECORATIVA
+========================================================= */
+
+.more-specialties-header::after {
+    content: "";
+
+    display: block;
+
+    width: 45px;
+    height: 1px;
+
+    margin-top: 25px;
+
+    background:
+        var(--green);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 750px) {
+
+    .more-specialties-dialog {
+        padding: 42px 32px;
+    }
+
+    .more-specialties-header h2 {
+        font-size: 42px;
+    }
+
+    .more-specialties-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 500px) {
+
+    .more-specialties-modal {
+        padding: 15px;
+    }
+
+    .more-specialties-dialog {
+        width: 100%;
+
+        max-height: 92vh;
+
+        padding:
+            38px 22px 25px;
+
+        border-radius:
+            15px;
+    }
+
+    .more-specialties-close {
+        top: 12px;
+        right: 12px;
+
+        width: 36px;
+        height: 36px;
+
+        font-size: 24px;
+    }
+
+    .more-specialties-header {
+        margin-bottom: 28px;
+    }
+
+    .more-specialties-header h2 {
+        font-size: 36px;
+    }
+
+    .more-specialties-header p {
+        font-size: 11px;
+    }
+
+    .more-specialty-item {
+        padding: 22px;
+    }
+
+    .more-specialty-item p {
+        font-size: 10px;
+        line-height: 1.65;
+    }
+}
+
+/* =========================================================
+   MODAL — VER TODOS LOS CASOS
+========================================================= */
+
+.cases-modal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1200;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
+}
+
+.cases-modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   FONDO DEL MODAL
+========================================================= */
+
+.cases-modal-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        rgba(23, 68, 91, .66);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* =========================================================
+   VENTANA PRINCIPAL
+========================================================= */
+
+.cases-modal-dialog {
+    position: relative;
+    z-index: 2;
+
+    width: min(1080px, 100%);
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 48px;
+
+    border-radius: 20px;
+
+    background: var(--white);
+
+    box-shadow:
+        0 30px 90px
+        rgba(23, 68, 91, .30);
+
+    transform:
+        translateY(30px)
+        scale(.96);
+
+    transition:
+        transform .35s ease;
+
+    scrollbar-width: thin;
+    scrollbar-color:
+        var(--green)
+        #edf3f0;
+}
+
+.cases-modal.active
+.cases-modal-dialog {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =========================================================
+   BOTÓN CERRAR
+========================================================= */
+
+.cases-modal-close {
+    position: absolute;
+
+    top: 16px;
+    right: 16px;
+
+    z-index: 10;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 50%;
+
+    background:
+        #f1f5f3;
+
+    color:
+        var(--blue-dark);
+
+    font-size: 26px;
+    font-weight: 300;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.cases-modal-close:hover {
+    background:
+        var(--green);
+
+    color:
+        var(--white);
+
+    transform:
+        rotate(90deg);
+
+    box-shadow:
+        0 8px 18px
+        rgba(113, 155, 130, .25);
+}
+
+
+/* =========================================================
+   ENCABEZADO
+========================================================= */
+
+.cases-modal-header {
+    max-width: 700px;
+
+    margin-bottom: 32px;
+}
+
+.cases-modal-header span {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 9px;
+    font-weight: 500;
+
+    line-height: 1.3;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color:
+        var(--green);
+}
+
+.cases-modal-header h2 {
+    margin-bottom: 16px;
+
+    font-family:
+        var(--font-title);
+
+    font-size: 50px;
+
+    font-weight: 500;
+
+    line-height: .95;
+
+    color:
+        var(--blue-dark);
+}
+
+.cases-modal-header p {
+    max-width: 620px;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+    color:
+        var(--text);
+}
+
+
+/* =========================================================
+   LÍNEA DECORATIVA
+========================================================= */
+
+.cases-modal-header::after {
+    content: "";
+
+    display: block;
+
+    width: 45px;
+    height: 1px;
+
+    margin-top: 23px;
+
+    background:
+        var(--green);
+}
+
+
+/* =========================================================
+   GALERÍA DE 9 CASOS
+========================================================= */
+
+.cases-modal-gallery {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+}
+
+
+/* =========================================================
+   TARJETA
+========================================================= */
+
+.cases-modal-card {
+    position: relative;
+
+    width: 100%;
+    height: 190px;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    background:
+        #edf3f0;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 18px
+        rgba(23, 68, 91, .07);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+.cases-modal-card:hover {
+    transform:
+        translateY(-7px)
+        scale(1.01);
+
+    box-shadow:
+        0 17px 35px
+        rgba(23, 68, 91, .16);
+}
+
+
+/* =========================================================
+   IMAGEN
+========================================================= */
+
+.cases-modal-card img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition:
+        transform .6s ease,
+        filter .4s ease;
+}
+
+.cases-modal-card:hover img {
+    transform:
+        scale(1.07);
+
+    filter:
+        brightness(1.04);
+}
+
+
+/* =========================================================
+   ETIQUETA — ANTES / DURANTE / DESPUÉS
+========================================================= */
+
+.cases-modal-card span {
+    position: absolute;
+
+    left: 12px;
+    bottom: 12px;
+
+    padding:
+        8px 13px;
+
+    border-radius:
+        22px;
+
+    background:
+        rgba(255,255,255,.96);
+
+    font-size:
+        8px;
+
+    font-weight:
+        600;
+
+    line-height:
+        1;
+
+    letter-spacing:
+        1.2px;
+
+    text-transform:
+        uppercase;
+
+    color:
+        var(--blue-dark);
+
+    box-shadow:
+        0 4px 12px
+        rgba(23,68,91,.10);
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        transform .3s ease;
+}
+
+.cases-modal-card:hover span {
+    background:
+        var(--green);
+
+    color:
+        var(--white);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   VISOR DE IMAGEN AMPLIADA
+========================================================= */
+
+.case-image-viewer {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1300;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity .3s ease;
+}
+
+.case-image-viewer.active {
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   FONDO DEL VISOR
+========================================================= */
+
+.case-image-viewer-bg {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(10, 31, 40, .88);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+}
+
+
+/* =========================================================
+   CONTENIDO DEL VISOR
+========================================================= */
+
+.case-image-viewer-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width:
+        min(1000px, 95vw);
+
+    max-height:
+        90vh;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+}
+
+
+/* =========================================================
+   IMAGEN GRANDE
+========================================================= */
+
+.case-image-viewer-content img {
+    display:
+        block;
+
+    width:
+        auto;
+
+    height:
+        auto;
+
+    max-width:
+        100%;
+
+    max-height:
+        78vh;
+
+    object-fit:
+        contain;
+
+    border-radius:
+        10px;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.35);
+}
+
+
+/* =========================================================
+   TITULO DEL CASO
+========================================================= */
+
+.case-image-viewer-content p {
+    margin-top:
+        13px;
+
+    font-size:
+        10px;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.4;
+
+    letter-spacing:
+        1px;
+
+    text-transform:
+        uppercase;
+
+    color:
+        rgba(255,255,255,.88);
+}
+
+
+/* =========================================================
+   CERRAR VISOR
+========================================================= */
+
+.case-image-viewer-close {
+    position:
+        absolute;
+
+    top:
+        -18px;
+
+    right:
+        -18px;
+
+    width:
+        40px;
+
+    height:
+        40px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        0;
+
+    border:
+        0;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--white);
+
+    color:
+        var(--blue-dark);
+
+    font-size:
+        26px;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        transform .3s ease;
+}
+
+.case-image-viewer-close:hover {
+
+    background:
+        var(--green);
+
+    color:
+        var(--white);
+
+    transform:
+        rotate(90deg);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .cases-modal {
+
+        padding:
+            20px;
+
+    }
+
+    .cases-modal-dialog {
+
+        padding:
+            42px 30px;
+
+    }
+
+    .cases-modal-header h2 {
+
+        font-size:
+            43px;
+
+    }
+
+    .cases-modal-gallery {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 550px) {
+
+    .cases-modal {
+
+        padding:
+            14px;
+
+    }
+
+    .cases-modal-dialog {
+
+        max-height:
+            92vh;
+
+        padding:
+            35px 20px 25px;
+
+        border-radius:
+            15px;
+
+    }
+
+    .cases-modal-close {
+
+        top:
+            12px;
+
+        right:
+            12px;
+
+        width:
+            36px;
+
+        height:
+            36px;
+
+        font-size:
+            24px;
+
+    }
+
+    .cases-modal-header {
+
+        margin-bottom:
+            25px;
+
+    }
+
+    .cases-modal-header h2 {
+
+        font-size:
+            36px;
+
+    }
+
+    .cases-modal-header p {
+
+        font-size:
+            11px;
+
+    }
+
+    .cases-modal-gallery {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            12px;
+
+    }
+
+    .cases-modal-card {
+
+        height:
+            210px;
+
+    }
+
+    .case-image-viewer {
+
+        padding:
+            15px;
+
+    }
+
+    .case-image-viewer-content img {
+
+        max-height:
+            75vh;
+
+    }
+
+    .case-image-viewer-close {
+
+        top:
+            -12px;
+
+        right:
+            -5px;
+
+    }
+
+}
+/* =========================================================
+   AJUSTE GENERAL — TIPOGRAFÍA MÁS GRANDE
+   ========================================================= */
+
+/* Texto general */
+p {
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* Etiquetas de sección */
+.section-label {
+    font-size: 12px;
+    letter-spacing: 2.2px;
+    line-height: 1.4;
+}
+
+/* Títulos principales */
+.section-title {
+    font-size: clamp(42px, 3.4vw, 58px);
+    line-height: 1.08;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.doctor-name {
+    font-size: 11px;
+}
+
+.doctor-lastname {
+    font-size: 12px;
+}
+
+.doctor-specialty {
+    font-size: 9px;
+}
+
+.nav-link {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero-quote {
+    font-size: 32px;
+    line-height: 1.1;
+}
+
+.hero-content h1 {
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+.hero-specialty {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   SOBRE MÍ
+   ========================================================= */
+
+.about-content .section-title {
+    font-size: 43px;
+    line-height: 1.05;
+}
+
+.about-text {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.text-link {
+    font-size: 11px;
+}
+
+.feature-content h3 {
+    font-size: 12px;
+}
+
+.feature-content p {
+    font-size: 11px;
+    line-height: 1.55;
+}
+
+.feature-icon {
+    font-size: 25px;
+}
+
+
+/* =========================================================
+   ESPECIALIDADES
+   ========================================================= */
+
+.specialties-intro .section-title {
+    font-size: 45px;
+    line-height: 1.12;
+
+    /*
+       Evita que las palabras se peguen
+       visualmente entre líneas
+    */
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+
+    /*
+       Mejora la distribución del texto
+    */
+    text-wrap: balance;
+}
+
+.specialties-description {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* Tarjetas */
+.specialty-card-content p {
+    font-size: 12px;
+    line-height: 1.65;
+}
+
+.specialty-tag {
+    font-size: 10px;
+}
+
+.card-link {
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   TRAYECTORIA
+   ========================================================= */
+
+.trajectory-intro p {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.timeline-year {
+    font-size: 11px;
+}
+
+.timeline-content h3 {
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+.timeline-content p {
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   CASOS CLÍNICOS
+   ========================================================= */
+
+.cases-intro .section-title {
+    font-size: 42px;
+    line-height: 1.08;
+}
+
+.cases-intro > p {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   CONTACTO
+   ========================================================= */
+
+.contact-title h2 {
+    font-size: 36px;
+    line-height: 1.05;
+}
+
+.contact-message p {
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.contact-item {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+
+.btn {
+    font-size: 10px;
+    min-height: 46px;
+    padding: 0 23px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer-slogan span {
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   MODALES
+   ========================================================= */
+
+.specialty-modal-label {
+    font-size: 11px;
+}
+
+.specialty-modal-content p {
+    font-size: 15px;
+    line-height: 1.85;
+}
+
+.more-specialties-header span {
+    font-size: 11px;
+}
+
+.more-specialties-header h2 {
+    font-size: 52px;
+}
+
+.more-specialties-header p {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.more-specialty-item h3 {
+    font-size: 13px;
+}
+
+.more-specialty-item p {
+    font-size: 12px;
+    line-height: 1.75;
+}
+
+.cases-modal-header span {
+    font-size: 11px;
+}
+
+.cases-modal-header h2 {
+    font-size: 54px;
+}
+
+.cases-modal-header p {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.cases-modal-card span {
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    p {
+        font-size: 14px;
+    }
+
+    .section-title {
+        font-size: 44px;
+    }
+
+    .hero-quote {
+        font-size: 30px;
+    }
+
+    .about-content .section-title {
+        font-size: 40px;
+    }
+
+    .specialties-intro .section-title {
+        font-size: 42px;
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    p {
+        font-size: 14px;
+    }
+
+    .section-title {
+        font-size: 39px;
+        line-height: 1.08;
+    }
+
+    .hero-quote {
+        font-size: 27px;
+    }
+
+    .hero-content h1 {
+        font-size: 12px;
+    }
+
+    .hero-specialty {
+        font-size: 10px;
+    }
+
+    .about-content .section-title {
+        font-size: 38px;
+    }
+
+    .specialties-intro .section-title {
+        font-size: 39px;
+        line-height: 1.1;
+    }
+
+    .specialties-description {
+        font-size: 14px;
+    }
+
+    .specialty-card-content p {
+        font-size: 12px;
+    }
+
+    .trajectory-intro p {
+        font-size: 14px;
+    }
+
+    .timeline-content h3 {
+        font-size: 12px;
+    }
+
+    .timeline-content p {
+        font-size: 11px;
+    }
+
+    .cases-intro > p {
+        font-size: 13px;
+    }
+
+    .contact-message p {
+        font-size: 13px;
+    }
+
+    .contact-item {
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL PEQUEÑO
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .section-title {
+        font-size: 36px;
+    }
+
+    .specialties-intro .section-title {
+        font-size: 36px;
+        line-height: 1.12;
+    }
+
+    .hero-quote {
+        font-size: 25px;
+    }
+
+}
+
+.specialties-title-line {
+    white-space: nowrap;
+}
+/* =========================================================
+   AJUSTE HERO — MÁS AIRE Y FOTO MÁS PROPORCIONADA
+========================================================= */
+
+/* Frase principal */
+.hero-quote {
+    max-width: 390px;
+    font-size: 34px;
+    line-height: 1.18;
+}
+
+/* Separación entre frase y nombre */
+.hero-divider {
+    width: 38px;
+    height: 1px;
+    margin: 28px 0 24px;
+}
+
+/* Nombre de la doctora */
+.hero-content h1 {
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 2.2px;
+}
+
+/* Especialidad */
+.hero-specialty {
+    margin-top: 10px;
+    margin-bottom: 28px;
+    font-size: 11px;
+    line-height: 1.5;
+    letter-spacing: 2px;
+}
+
+/* Botón un poco más cómodo */
+.hero-content .btn {
+    min-height: 48px;
+    font-size: 10px;
+    padding: 0 24px;
+}
+
+
+/* =========================================================
+   FOTO HERO — MÁS PEQUEÑA
+========================================================= */
+
+.hero-image-container {
+    min-height: 560px;
+}
+
+.hero-image-wrapper {
+    top: 90px;
+    right: 0;
+
+    width: 92%;
+    height: 430px;
+
+    border-top-left-radius: 165px;
+}
+
+/* La imagen conserva el difuminado */
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   MÁS SEPARACIÓN ENTRE CONTENIDO Y FOTO
+========================================================= */
+
+.hero-container {
+    grid-template-columns: 34% 54% 12%;
+}
+
+.hero-content {
+    padding-top: 65px;
+    padding-right: 25px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .hero-container {
+        grid-template-columns: 34% 56% 10%;
+    }
+
+    .hero-quote {
+        font-size: 31px;
+    }
+
+    .hero-content h1 {
+        font-size: 13px;
+    }
+
+    .hero-specialty {
+        font-size: 10px;
+    }
+
+    .hero-image-wrapper {
+        top: 80px;
+        width: 94%;
+        height: 450px;
+    }
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .hero-content {
+        padding-top: 0;
+        padding-right: 0;
+    }
+
+    .hero-quote {
+        font-size: 30px;
+        line-height: 1.15;
+    }
+
+    .hero-content h1 {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .hero-specialty {
+        font-size: 10px;
+    }
+
+    .hero-image-wrapper {
+        top: 75px;
+        width: 100%;
+        height: calc(100% - 75px);
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .hero-quote {
+        font-size: 27px;
+        line-height: 1.15;
+    }
+
+    .hero-content h1 {
+        font-size: 12px;
+        line-height: 1.7;
+        letter-spacing: 1.8px;
+    }
+
+    .hero-specialty {
+        font-size: 10px;
+        letter-spacing: 1.6px;
+    }
+}
