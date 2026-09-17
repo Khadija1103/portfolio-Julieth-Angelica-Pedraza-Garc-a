@@ -1,4 +1,3 @@
-
 /* =========================================================
    SCRIPT.JS
    Portafolio Dra. Julieth Angélica Pedraza García
@@ -43,19 +42,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (isOpen) {
 
-                lines[0].style.transform =
-                    "translateY(7px) rotate(45deg)";
+                if (lines[0]) {
+                    lines[0].style.transform =
+                        "translateY(7px) rotate(45deg)";
+                }
 
-                lines[1].style.opacity = "0";
+                if (lines[1]) {
+                    lines[1].style.opacity = "0";
+                }
 
-                lines[2].style.transform =
-                    "translateY(-7px) rotate(-45deg)";
+                if (lines[2]) {
+                    lines[2].style.transform =
+                        "translateY(-7px) rotate(-45deg)";
+                }
 
             } else {
 
-                lines[0].style.transform = "none";
-                lines[1].style.opacity = "1";
-                lines[2].style.transform = "none";
+                lines.forEach((line) => {
+                    line.style.transform = "none";
+                });
+
+                if (lines[1]) {
+                    lines[1].style.opacity = "1";
+                }
+
             }
 
         });
@@ -174,6 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
                    Los botones VER DETALLES se manejan
                    aparte por el modal.
                 */
+
                 if (
                     link.classList.contains("card-link")
                 ) {
@@ -307,6 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             card.style.transform =
                 `translate(${moveX}px, ${moveY}px)`;
+
         });
 
         card.addEventListener("mouseleave", () => {
@@ -477,7 +489,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       ABRIR MODAL
+       ABRIR MODAL DE ESPECIALIDAD
     ===================================================== */
 
     const openSpecialtyModal = (card) => {
@@ -530,6 +542,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 "specialtyModalDescription"
             );
 
+        if (
+            !modalImage ||
+            !modalLabel ||
+            !modalTitle ||
+            !modalDescription
+        ) {
+            return;
+        }
 
         modalImage.src =
             image.src;
@@ -546,19 +566,27 @@ document.addEventListener("DOMContentLoaded", () => {
         modalDescription.textContent =
             information.description;
 
-
         modal.classList.add("active");
 
         document.body.classList.add(
             "modal-open"
         );
 
-        document
-            .querySelector(".specialty-modal-close")
-            ?.focus();
+        const closeButton =
+            modal.querySelector(
+                ".specialty-modal-close"
+            );
+
+        if (closeButton) {
+            closeButton.focus();
+        }
 
     };
 
+
+    /* =====================================================
+       ENLACES DE ESPECIALIDADES
+    ===================================================== */
 
     specialtyLinks.forEach((link) => {
 
@@ -583,411 +611,454 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
+    /* =====================================================
+       CERRAR MODAL DE ESPECIALIDAD
+    ===================================================== */
 
-/* =========================================================
-   MODAL — CONOCE MÁS ESPECIALIDADES
-========================================================= */
+    const closeSpecialtyModal = () => {
 
-const moreSpecialtyButton =
-    document.querySelector(
-        ".specialties-intro .btn"
-    );
+        modal.classList.remove(
+            "active"
+        );
 
-const moreModal =
-    document.createElement("div");
+        document.body.classList.remove(
+            "modal-open"
+        );
 
-moreModal.className =
-    "more-specialties-modal";
+    };
 
-moreModal.innerHTML = `
 
-    <div
-        class="more-specialties-overlay"
-        data-close-more-modal="true"
-    ></div>
+    const specialtyCloseButton =
+        modal.querySelector(
+            ".specialty-modal-close"
+        );
 
 
-    <div
-        class="more-specialties-dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="moreSpecialtiesTitle"
-    >
+    if (specialtyCloseButton) {
 
-        <button
-            type="button"
-            class="more-specialties-close"
-            aria-label="Cerrar ventana"
-        >
-            ×
-        </button>
+        specialtyCloseButton.addEventListener(
+            "click",
+            (event) => {
 
+                event.preventDefault();
+                event.stopPropagation();
 
-        <div class="more-specialties-header">
+                closeSpecialtyModal();
 
-            <span>
-                SERVICIOS
-            </span>
-
-            <h2 id="moreSpecialtiesTitle">
-                Más opciones para
-                cuidar tu sonrisa
-            </h2>
-
-            <p>
-                Además de la ortodoncia y la ortopedia maxilar,
-                encontrarás diferentes alternativas odontológicas
-                para complementar el cuidado, la función y la
-                estética de tu sonrisa.
-            </p>
-
-        </div>
-
-
-        <!-- =====================================================
-             6 TARJETAS DE SERVICIOS
-        ====================================================== -->
-
-        <div class="more-specialties-grid">
-
-
-            <!-- ORTODONCIA -->
-
-            <article class="more-specialty-item">
-
-                <div
-                    class="more-specialty-icon"
-                    aria-hidden="true"
-                >
-
-                    <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            stroke-width="1.7"
-                        />
-
-                        <path
-                            d="M12 7V17"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round"
-                        />
-
-                        <path
-                            d="M7 12H17"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round"
-                        />
-
-                    </svg>
-
-                </div>
-
-
-                <h3>
-                    Ortodoncia
-                </h3>
-
-
-                <div class="more-specialty-service">
-                    <span class="service-bullet">•</span>
-                    <span>Ortodoncia convencional</span>
-                </div>
-
-                <div class="more-specialty-service">
-                    <span class="service-bullet">•</span>
-                    <span>Ortodoncia de autoligado</span>
-                </div>
-
-                <div class="more-specialty-service">
-                    <span class="service-bullet">•</span>
-                    <span>Ortodoncia invisible Invisalign</span>
-                </div>
-
-            </article>
-
-
-            <!-- ESTÉTICA DENTAL -->
-
-            <article class="more-specialty-item">
-
-                <div
-                    class="more-specialty-icon"
-                    aria-hidden="true"
-                >
-                    ✦
-                </div>
-
-
-                <h3>
-                    Estética dental
-                </h3>
-
-
-                <div class="more-specialty-service">
-                    <span class="service-bullet">•</span>
-                    <span>Diseño de sonrisa</span>
-                </div>
-
-                <div class="more-specialty-service">
-                    <span class="service-bullet">•</span>
-                    <span>Coronas en circonio libres de metal</span>
-                </div>
-
-            </article>
-
-
-            <!-- IMPLANTOLOGÍA -->
-
-            <article class="more-specialty-item">
-
-                <div
-                    class="more-specialty-icon"
-                    aria-hidden="true"
-                >
-                    ◇
-                </div>
-
-
-                <h3>
-                    Implantología
-                </h3>
-
-
-                <div class="more-specialty-service">
-                    <span class="service-bullet">•</span>
-                    <span>Implantes dentales</span>
-                </div>
-
-                <div class="more-specialty-service">
-                    <span class="service-bullet">•</span>
-                    <span>Prótesis rehabilitadas con implantes</span>
-                </div>
-
-            </article>
-
-
-            <!-- PRÓTESIS DENTALES -->
-
-            <article class="more-specialty-item">
-
-                <div
-                    class="more-specialty-icon"
-                    aria-hidden="true"
-                >
-                    ✧
-                </div>
-
-
-                <h3>
-                    Prótesis dentales
-                </h3>
-
-
-                <div class="more-specialty-service">
-                    <span class="service-bullet">•</span>
-                    <span>Prótesis totales</span>
-                </div>
-
-                <div class="more-specialty-service">
-                    <span class="service-bullet">•</span>
-                    <span>Prótesis parciales</span>
-                </div>
-
-            </article>
-
-
-            <!-- ODONTOPEDIATRÍA -->
-
-            <article class="more-specialty-item">
-
-                <div
-                    class="more-specialty-icon"
-                    aria-hidden="true"
-                >
-                    ♧
-                </div>
-
-
-                <h3>
-                    Odontopediatría
-                </h3>
-
-
-                <div class="more-specialty-service">
-                    <span class="service-bullet">•</span>
-                    <span>Atención odontológica para niños</span>
-                </div>
-
-                <div class="more-specialty-service">
-                    <span class="service-bullet">•</span>
-                    <span>Acompañamiento en cada etapa de su desarrollo y cuidado oral</span>
-                </div>
-
-            </article>
-
-
-            <!-- REHABILITACIÓN ORAL -->
-
-            <article class="more-specialty-item">
-
-                <div
-                    class="more-specialty-icon"
-                    aria-hidden="true"
-                >
-                    ⌁
-                </div>
-
-
-                <h3>
-                    Rehabilitación oral
-                </h3>
-
-
-                <div class="more-specialty-service">
-                    <span class="service-bullet">•</span>
-                    <span>Rehabilitación funcional y estética</span>
-                </div>
-
-                <div class="more-specialty-service">
-                    <span class="service-bullet">•</span>
-                    <span>Planificación integral de tratamientos</span>
-                </div>
-
-            </article>
-
-
-        </div>
-
-
-        <!-- =====================================================
-             LLAMADA A LA ACCIÓN
-        ====================================================== -->
-
-        <div class="more-specialties-cta">
-
-            <p>
-                ¿Preguntas por estos servicios?
-            </p>
-
-            <a
-                href="https://wa.me/573106810761"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="more-specialties-cta-button"
-            >
-                AGENDA TU VALORACIÓN
-                <span aria-hidden="true">→</span>
-            </a>
-
-        </div>
-
-
-    </div>
-`;
-
-
-document.body.appendChild(
-    moreModal
-);
-
-
-/* =========================================================
-   ABRIR MODAL
-========================================================= */
-
-if (moreSpecialtyButton) {
-
-    moreSpecialtyButton.addEventListener(
-        "click",
-        (event) => {
-
-            event.preventDefault();
-
-            moreModal.classList.add(
-                "active"
-            );
-
-            document.body.classList.add(
-                "modal-open"
-            );
-
-            const closeButton =
-                moreModal.querySelector(
-                    ".more-specialties-close"
-                );
-
-            if (closeButton) {
-                closeButton.focus();
             }
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   CERRAR MODAL
-========================================================= */
-
-const closeMoreSpecialtyModal = () => {
-
-    moreModal.classList.remove(
-        "active"
-    );
-
-    document.body.classList.remove(
-        "modal-open"
-    );
-
-};
-
-
-const moreCloseButton =
-    moreModal.querySelector(
-        ".more-specialties-close"
-    );
-
-
-if (moreCloseButton) {
-
-    moreCloseButton.addEventListener(
-        "click",
-        closeMoreSpecialtyModal
-    );
-
-}
-
-
-moreModal.addEventListener(
-    "click",
-    (event) => {
-
-        if (
-            event.target.dataset.closeMoreModal ===
-            "true"
-        ) {
-
-            closeMoreSpecialtyModal();
-
-        }
+        );
 
     }
-);
 
 
+    const specialtyModalOverlay =
+        modal.querySelector(
+            ".specialty-modal-overlay"
+        );
+
+
+    if (specialtyModalOverlay) {
+
+        specialtyModalOverlay.addEventListener(
+            "click",
+            closeSpecialtyModal
+        );
+
+    }
+
+
+    /* =========================================================
+       MODAL — CONOCE MÁS ESPECIALIDADES
+    ========================================================= */
+
+    const moreSpecialtyButton =
+        document.querySelector(
+            ".specialties-intro .btn"
+        );
+
+    const moreModal =
+        document.createElement("div");
+
+    moreModal.className =
+        "more-specialties-modal";
+
+    moreModal.innerHTML = `
+
+        <div
+            class="more-specialties-overlay"
+            data-close-more-modal="true"
+        ></div>
+
+        <div
+            class="more-specialties-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="moreSpecialtiesTitle"
+        >
+
+            <button
+                type="button"
+                class="more-specialties-close"
+                aria-label="Cerrar ventana"
+            >
+                ×
+            </button>
+
+            <div class="more-specialties-header">
+
+                <span>
+                    SERVICIOS
+                </span>
+
+                <h2 id="moreSpecialtiesTitle">
+                    Más opciones para
+                    cuidar tu sonrisa
+                </h2>
+
+                <p>
+                    Además de la ortodoncia y la ortopedia maxilar,
+                    encontrarás diferentes alternativas odontológicas
+                    para complementar el cuidado, la función y la
+                    estética de tu sonrisa.
+                </p>
+
+            </div>
+
+
+            <!-- =====================================================
+                 6 TARJETAS DE SERVICIOS
+            ====================================================== -->
+
+            <div class="more-specialties-grid">
+
+
+                <!-- ORTODONCIA -->
+
+                <article class="more-specialty-item">
+
+                    <div
+                        class="more-specialty-icon"
+                        aria-hidden="true"
+                    >
+
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                            />
+
+                            <path
+                                d="M12 7V17"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                            />
+
+                            <path
+                                d="M7 12H17"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                            />
+
+                        </svg>
+
+                    </div>
+
+                    <h3>
+                        Ortodoncia
+                    </h3>
+
+                    <div class="more-specialty-service">
+                        <span class="service-bullet">•</span>
+                        <span>Ortodoncia convencional</span>
+                    </div>
+
+                    <div class="more-specialty-service">
+                        <span class="service-bullet">•</span>
+                        <span>Ortodoncia de autoligado</span>
+                    </div>
+
+                    <div class="more-specialty-service">
+                        <span class="service-bullet">•</span>
+                        <span>Ortodoncia invisible Invisalign</span>
+                    </div>
+
+                </article>
+
+
+                <!-- ESTÉTICA DENTAL -->
+
+                <article class="more-specialty-item">
+
+                    <div
+                        class="more-specialty-icon"
+                        aria-hidden="true"
+                    >
+                        ✦
+                    </div>
+
+                    <h3>
+                        Estética dental
+                    </h3>
+
+                    <div class="more-specialty-service">
+                        <span class="service-bullet">•</span>
+                        <span>Diseño de sonrisa</span>
+                    </div>
+
+                    <div class="more-specialty-service">
+                        <span class="service-bullet">•</span>
+                        <span>Coronas en circonio libres de metal</span>
+                    </div>
+
+                </article>
+
+
+                <!-- IMPLANTOLOGÍA -->
+
+                <article class="more-specialty-item">
+
+                    <div
+                        class="more-specialty-icon"
+                        aria-hidden="true"
+                    >
+                        ◇
+                    </div>
+
+                    <h3>
+                        Implantología
+                    </h3>
+
+                    <div class="more-specialty-service">
+                        <span class="service-bullet">•</span>
+                        <span>Implantes dentales</span>
+                    </div>
+
+                    <div class="more-specialty-service">
+                        <span class="service-bullet">•</span>
+                        <span>Prótesis rehabilitadas con implantes</span>
+                    </div>
+
+                </article>
+
+
+                <!-- PRÓTESIS DENTALES -->
+
+                <article class="more-specialty-item">
+
+                    <div
+                        class="more-specialty-icon"
+                        aria-hidden="true"
+                    >
+                        ✧
+                    </div>
+
+                    <h3>
+                        Prótesis dentales
+                    </h3>
+
+                    <div class="more-specialty-service">
+                        <span class="service-bullet">•</span>
+                        <span>Prótesis totales</span>
+                    </div>
+
+                    <div class="more-specialty-service">
+                        <span class="service-bullet">•</span>
+                        <span>Prótesis parciales</span>
+                    </div>
+
+                </article>
+
+
+                <!-- ODONTOPEDIATRÍA -->
+
+                <article class="more-specialty-item">
+
+                    <div
+                        class="more-specialty-icon"
+                        aria-hidden="true"
+                    >
+                        ♧
+                    </div>
+
+                    <h3>
+                        Odontopediatría
+                    </h3>
+
+                    <div class="more-specialty-service">
+                        <span class="service-bullet">•</span>
+                        <span>Atención odontológica para niños</span>
+                    </div>
+
+                    <div class="more-specialty-service">
+                        <span class="service-bullet">•</span>
+                        <span>Acompañamiento en cada etapa de su desarrollo y cuidado oral</span>
+                    </div>
+
+                </article>
+
+
+                <!-- REHABILITACIÓN ORAL -->
+
+                <article class="more-specialty-item">
+
+                    <div
+                        class="more-specialty-icon"
+                        aria-hidden="true"
+                    >
+                        ⌁
+                    </div>
+
+                    <h3>
+                        Rehabilitación oral
+                    </h3>
+
+                    <div class="more-specialty-service">
+                        <span class="service-bullet">•</span>
+                        <span>Rehabilitación funcional y estética</span>
+                    </div>
+
+                    <div class="more-specialty-service">
+                        <span class="service-bullet">•</span>
+                        <span>Planificación integral de tratamientos</span>
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- =====================================================
+                 LLAMADA A LA ACCIÓN
+            ====================================================== -->
+
+            <div class="more-specialties-cta">
+
+                <p>
+                    ¿Preguntas por estos servicios?
+                </p>
+
+                <a
+                    href="https://wa.me/573106810761"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="more-specialties-cta-button"
+                >
+                    AGENDA TU VALORACIÓN
+                    <span aria-hidden="true">→</span>
+                </a>
+
+            </div>
+
+        </div>
+    `;
+
+
+    document.body.appendChild(
+        moreModal
+    );
+
+
+    /* =========================================================
+       ABRIR MODAL — CONOCE MÁS
+    ========================================================= */
+
+    if (moreSpecialtyButton) {
+
+        moreSpecialtyButton.addEventListener(
+            "click",
+            (event) => {
+
+                event.preventDefault();
+
+                moreModal.classList.add(
+                    "active"
+                );
+
+                document.body.classList.add(
+                    "modal-open"
+                );
+
+                const closeButton =
+                    moreModal.querySelector(
+                        ".more-specialties-close"
+                    );
+
+                if (closeButton) {
+                    closeButton.focus();
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =========================================================
+       CERRAR MODAL — CONOCE MÁS
+    ========================================================= */
+
+    const closeMoreSpecialtyModal = () => {
+
+        moreModal.classList.remove(
+            "active"
+        );
+
+        document.body.classList.remove(
+            "modal-open"
+        );
+
+    };
+
+
+    const moreCloseButton =
+        moreModal.querySelector(
+            ".more-specialties-close"
+        );
+
+
+    if (moreCloseButton) {
+
+        moreCloseButton.addEventListener(
+            "click",
+            (event) => {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                closeMoreSpecialtyModal();
+
+            }
+        );
+
+    }
+
+
+    const moreSpecialtiesOverlay =
+        moreModal.querySelector(
+            ".more-specialties-overlay"
+        );
+
+
+    if (moreSpecialtiesOverlay) {
+
+        moreSpecialtiesOverlay.addEventListener(
+            "click",
+            closeMoreSpecialtyModal
+        );
+
+    }
 
 
     /* =========================================================
@@ -1258,7 +1329,7 @@ moreModal.addEventListener(
 
 
     /* =========================================================
-       ABRIR MODAL
+       ABRIR MODAL — CASOS
     ========================================================= */
 
     if (allCasesButton) {
@@ -1277,6 +1348,15 @@ moreModal.addEventListener(
                     "modal-open"
                 );
 
+                const closeButton =
+                    casesModal.querySelector(
+                        ".cases-modal-close"
+                    );
+
+                if (closeButton) {
+                    closeButton.focus();
+                }
+
             }
         );
 
@@ -1284,7 +1364,7 @@ moreModal.addEventListener(
 
 
     /* =========================================================
-       CERRAR MODAL
+       CERRAR MODAL — CASOS
     ========================================================= */
 
     const closeCasesModal = () => {
@@ -1310,7 +1390,14 @@ moreModal.addEventListener(
 
         casesCloseButton.addEventListener(
             "click",
-            closeCasesModal
+            (event) => {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                closeCasesModal();
+
+            }
         );
 
     }
@@ -1320,21 +1407,20 @@ moreModal.addEventListener(
        CERRAR AL HACER CLICK EN EL FONDO
     ========================================================= */
 
-    casesModal.addEventListener(
-        "click",
-        (event) => {
+    const casesModalOverlay =
+        casesModal.querySelector(
+            ".cases-modal-overlay"
+        );
 
-            if (
-                event.target.dataset.closeCases ===
-                "true"
-            ) {
 
-                closeCasesModal();
+    if (casesModalOverlay) {
 
-            }
+        casesModalOverlay.addEventListener(
+            "click",
+            closeCasesModal
+        );
 
-        }
-    );
+    }
 
 
     /* =========================================================
@@ -1442,16 +1528,24 @@ moreModal.addEventListener(
                     );
 
 
-                viewerCloseButton.addEventListener(
-                    "click",
-                    closeViewer
-                );
+                if (viewerCloseButton) {
+
+                    viewerCloseButton.addEventListener(
+                        "click",
+                        closeViewer
+                    );
+
+                }
 
 
-                viewerBackground.addEventListener(
-                    "click",
-                    closeViewer
-                );
+                if (viewerBackground) {
+
+                    viewerBackground.addEventListener(
+                        "click",
+                        closeViewer
+                    );
+
+                }
 
             }
         );
@@ -1547,13 +1641,7 @@ moreModal.addEventListener(
                 )
             ) {
 
-                modal.classList.remove(
-                    "active"
-                );
-
-                document.body.classList.remove(
-                    "modal-open"
-                );
+                closeSpecialtyModal();
 
                 return;
 
@@ -1727,4 +1815,3 @@ moreModal.addEventListener(
     );
 
 });
-
